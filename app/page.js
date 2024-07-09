@@ -8,6 +8,7 @@ import ProductListListView from "./components/ProductListListView";
 import Sidebar from "./components/Sidebar";
 import MenuTab from "./components/MenuTab";
 import Filters from "./components/Filters";
+import Pagination from "./components/Pagination";
 
 export default function Home() {
   const [viewType, setViewType] = useState("grid");
@@ -31,6 +32,7 @@ export default function Home() {
           )}
         </div>
       </div>
+      <Pagination />
     </main>
   );
 }
