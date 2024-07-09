@@ -23,16 +23,31 @@ const Sidebar = () => {
       id: 5,
       link: "Beauty",
     },
+    {
+      id: 6,
+      link: "Dress",
+    },
+    {
+      id: 7,
+      link: "Blouse",
+    },
+    {
+      id: 8,
+      link: "Outer",
+    },
   ];
   return (
     <div className="hidden md:flex md:flex-col py-3">
       <h1 className="text-lg mb-3">Category</h1>
-      <ul className="flex flex-col gap-3">
-        {links.map(({ id, link }) => {
-          <li key={id} className="text-[#948775] font-semibold text-md">
+      <ul className="flex flex-col">
+        {links.map(({ id, link }) => (
+          <li
+            key={id}
+            className="text-[#948775] font-semibold text-xl leading-[46px]"
+          >
             <Link href={link}>{link}</Link>
-          </li>;
-        })}
+          </li>
+        ))}
       </ul>
     </div>
   );
