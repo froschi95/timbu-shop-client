@@ -37,8 +37,8 @@ const Sidebar = () => {
     },
   ];
   return (
-    <div className="hidden md:flex md:flex-col py-3">
-      <h1 className="text-lg mb-3">Category</h1>
+    <div className="hidden md:flex md:flex-col md:py-3">
+      <h1 className="text-3xl leading-[46px]">Category</h1>
       <ul className="flex flex-col">
         {links.map(({ id, link }) => (
           <li
