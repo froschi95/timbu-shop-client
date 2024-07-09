@@ -1,32 +1,29 @@
-import Image from "next/image";
+"use client";
+
+import { useState } from "react";
 import ProductList from "./components/ProductList";
 import Hero from "./components/Hero";
-// import BannerImg from "./../public/BannerImg";
-
-const products = [
-  // Populate this array with product data based on your design
-  {
-    id: 1,
-    name: "Product 1",
-    description: "Description for Product 1",
-    price: "29.99",
-    image: "./../public/BannerImg.png",
-  },
-  {
-    id: 2,
-    name: "Product 2",
-    description: "Description for Product 2",
-    price: "39.99",
-    image: "./../public/BannerImg.png",
-  },
-  // Add more products as needed
-];
+import products from "./data/products.json";
+import ToggleView from "./components/ToggleView";
 
 export default function Home() {
+  const [viewType, setViewType] = useState("list");
+
+  const toggleViewType = () => {
+    setViewType((prevViewType) => (prevViewType === "list" ? "grid" : "list"));
+    console.log(viewType);
+  };
+
   return (
-    <main className="top-[104px]">
-      <Hero />
-      <ProductList products={products} />
+    <main className="top-[104px] px-6">
+      {/* <Hero /> */}
+      <div className="flex justify-between">
+        <h1>APPAREL</h1>
+        <div className="flex">
+          <ToggleView viewType={viewType} toggleViewType={toggleViewType} />
+        </div>
+      </div>
+      <ProductList products={products} viewType={viewType} />
     </main>
   );
 }

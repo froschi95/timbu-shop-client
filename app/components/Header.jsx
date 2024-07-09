@@ -39,7 +39,7 @@ const Navbar = () => {
 
   return (
     <header>
-      <nav className="flex justify-between items-center w-full h-[104px] px-6 pt-[14px] pb-[34px] text-white bg-[#948775]">
+      <nav className="flex justify-between items-center w-full h-[104px] px-6 pt-[14px] pb-[34px] text-white bg-white sm:bg-[#948775]">
         {/* fixed navOpen*/}
         <div
           onClick={() => setNavOpen(!navOpen)}
@@ -51,6 +51,18 @@ const Navbar = () => {
             <Image src={MenuIcon} alt="menu" />
           )}
         </div>
+
+        {/* <ul className="hidden md:flex">
+        {links.map(({ id, link }) => (
+          <li
+            key={id}
+            className="nav-links px-4 cursor-pointer font-medium text-gray-500 hover:scale-105 hover:text-white duration-200 link-underline"
+          >
+            <Link href={link}>{link}</Link>
+          </li>
+        ))}
+      </ul> */}
+
         <div className="cursor-pointer hover:transition ease-in-out delay-150">
           <Image alt="logo" src={Logo} />
         </div>
@@ -58,16 +70,7 @@ const Navbar = () => {
           <Image src={SearchIcon} alt="search" />
           <Image alt="bag" src={Bag} />
         </div>
-        {/* <ul className="hidden md:flex">
-        {links.map(({ id, link }) => (
-          <li
-            key={id}
-            className="nav-links px-4 cursor-pointer capitalize font-medium text-gray-500 hover:scale-105 hover:text-white duration-200 link-underline"
-          >
-            <Link href={link}>{link}</Link>
-          </li>
-        ))}
-      </ul> */}
+
         {navOpen && (
           <div className="flex flex-col px-4 absolute top-0 pt-[113px] left-0 w-full h-screen bg-white text-black">
             <ul className="flex flex-col gap-6 ">
