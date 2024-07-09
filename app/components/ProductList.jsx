@@ -4,7 +4,7 @@ import ProductCard from "./ProductCard";
 export default function ProductList({ products, viewType }) {
   return (
     <div
-      className={`relative grid ${
+      className={`relative grid w-full ${
         viewType !== "list"
           ? "grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4"
           : "grid-cols-1 w-1/5"

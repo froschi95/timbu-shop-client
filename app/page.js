@@ -7,7 +7,7 @@ import products from "./data/products.json";
 import ToggleView from "./components/ToggleView";
 
 export default function Home() {
-  const [viewType, setViewType] = useState("list");
+  const [viewType, setViewType] = useState("grid");
 
   const toggleViewType = () => {
     setViewType((prevViewType) => (prevViewType === "list" ? "grid" : "list"));
