@@ -9,6 +9,8 @@ import Sidebar from "./components/Sidebar";
 import MenuTab from "./components/MenuTab";
 import Filters from "./components/Filters";
 import Pagination from "./components/Pagination";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
 
 export default function Home() {
   const [viewType, setViewType] = useState("grid");
@@ -18,21 +20,25 @@ export default function Home() {
   };
 
   return (
-    <main className="mx-auto px-6 lg:px-9">
-      <MenuTab />
-      {/* <Hero /> */}
-      <Filters viewType={viewType} toggleViewType={toggleViewType} />
-      <div className="flex md:gap-20 lg:gap-[131px]">
-        <Sidebar />
-        <div className="mt-4 mx-auto w-full">
-          {viewType === "grid" ? (
-            <ProductListGridView products={products} />
-          ) : (
-            <ProductListListView products={products} />
-          )}
+    <>
+      <Header />
+      <main className="mx-auto px-6 lg:px-9">
+        <MenuTab />
+        {/* <Hero /> */}
+        <Filters viewType={viewType} toggleViewType={toggleViewType} />
+        <div className="flex md:gap-20 lg:gap-[131px]">
+          <Sidebar />
+          <div className="mt-4 mx-auto w-full">
+            {viewType === "grid" ? (
+              <ProductListGridView products={products} />
+            ) : (
+              <ProductListListView products={products} />
+            )}
+          </div>
         </div>
-      </div>
-      <Pagination />
-    </main>
+        <Pagination />
+      </main>
+      <Footer />
+    </>
   );
 }

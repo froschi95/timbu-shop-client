@@ -3,7 +3,6 @@ import ProductCard from "../components/ProductCard";
 import Image from "next/image";
 import Star from "/public/Star 1.svg";
 import products from "../data/products.json";
-import Bag from "/public/bag.svg";
 
 const CartPage = () => {
   return (
@@ -63,10 +62,6 @@ const CartPage = () => {
             <h1 className="text-sm font-bold">SUB TOTAL</h1>
             <p className="text-sm font-bold text-[#A17E6D]">$299</p>
           </div>
-        </div>
-        <div className="h-14 bg-black flex gap-6 justify-center items-center">
-          <Image src={Bag} alt="cart" />
-          <p className="text-sm font-bold text-white">BUY NOW</p>
         </div>
       </div>
     </div>
