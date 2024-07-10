@@ -8,7 +8,7 @@ const CartPage = () => {
   return (
     <div className="mx-auto px-6">
       <div className="relative flex flex-col w-full md:w-2/3 gap-3">
-        {products.slice(1, 3).map((product) => (
+        {products.slice(1, 4).map((product) => (
           <>
             <div key={product.id} className="relative flex gap-3">
               <div className="w-full">
