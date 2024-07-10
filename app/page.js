@@ -9,7 +9,6 @@ import Sidebar from "./components/Sidebar";
 import MenuTab from "./components/MenuTab";
 import Filters from "./components/Filters";
 import Pagination from "./components/Pagination";
-import Header from "./components/Header";
 import Footer from "./components/Footer";
 
 export default function Home() {
@@ -21,7 +20,6 @@ export default function Home() {
 
   return (
     <>
-      <Header />
       <main className="mx-auto px-6 lg:px-9">
         <MenuTab />
         {/* <Hero /> */}

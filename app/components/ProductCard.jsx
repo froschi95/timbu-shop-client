@@ -4,7 +4,7 @@ import Heart from "/public/Heart.svg";
 
 export default function ProductCard({ product }) {
   return (
-    <div className="relative h-[164px] w-[154px] rounded-xl shadow-md xl:w-[250px] xl:h-[260px] ">
+    <div className="relative h-[164px] w-[154px] rounded-xl shadow-md xl:w-[250px] xl:h-[260px]">
       <Image
         src={product.image}
         alt={product.name}

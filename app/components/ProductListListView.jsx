@@ -7,7 +7,7 @@ import Compare from "/public/compare.svg";
 
 const ProductListListView = ({ products }) => {
   return (
-    <div className="relative flex flex-col w-full md:w-2/3 gap-3">
+    <div className="relative flex flex-col w-full md:w-2/3 gap-3 -z-10">
       {products.map((product) => (
         <div key={product.id} className="relative flex gap-3">
           <div className="w-full">

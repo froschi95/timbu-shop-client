@@ -43,7 +43,7 @@ const Navbar = () => {
         {/* fixed navOpen*/}
         <div
           onClick={() => setNavOpen(!navOpen)}
-          className="cursor-pointer pr-4 z-20 text-white md:hidden"
+          className="cursor-pointer pr-4 z-50 text-white md:hidden"
         >
           {navOpen ? (
             <Image src={CloseIcon} alt="close" unoptimized />
@@ -119,7 +119,7 @@ const Navbar = () => {
         </div>
 
         {navOpen && (
-          <div className="flex flex-col px-4 absolute top-0 pt-[113px] left-0 w-full h-screen bg-white text-black z-10">
+          <div className="flex flex-col px-4 fixed top-0 pt-[113px] left-0 w-full h-screen bg-white z-40 text-black bg-opacity-100">
             <ul className="flex flex-col gap-6 ">
               {links.map(({ id, link }) => (
                 <li
