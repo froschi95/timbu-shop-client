@@ -5,7 +5,7 @@ export default function CheckoutLayout({ children }) {
     <section>
       {/* <Header /> */}
       {children}
-      <BuyNow text={"place order"} />
+      <BuyNow text={"place order"} hRef={"/"} />
     </section>
   );
 }

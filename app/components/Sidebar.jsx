@@ -43,7 +43,7 @@ const Sidebar = () => {
         {links.map(({ id, link }) => (
           <li
             key={id}
-            className="text-[#948775] font-semibold text-xl leading-[46px]"
+            className="text-[#948775] font-semibold text-xl leading-[46px] hover:underline transition-all duration-200"
           >
             <Link href={link}>{link}</Link>
           </li>

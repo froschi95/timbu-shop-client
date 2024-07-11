@@ -6,7 +6,7 @@ const ToggleView = ({ toggleViewType, viewType }) => {
   return (
     <div
       onClick={toggleViewType}
-      className="flex bg-[#c4c4c42a] rounded-full items-center justify-center w-9 h-9"
+      className="flex bg-[#c4c4c42a] rounded-full items-center justify-center w-9 h-9 hover:scale-105 hover:transition-all duration-200"
     >
       <svg
         width="36"

@@ -20,7 +20,7 @@ export default function Home() {
 
   return (
     <>
-      <main className="mx-auto px-6 lg:px-9">
+      <main className="mx-auto max-w-[1440px] px-6 lg:px-9">
         <MenuTab />
         {/* <Hero /> */}
         <Filters viewType={viewType} toggleViewType={toggleViewType} />

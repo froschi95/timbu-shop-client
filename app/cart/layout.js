@@ -6,7 +6,7 @@ export default function CartLayout({ children }) {
     <section>
       {/* <Header /> */}
       {children}
-      <BuyNow text={"buy now"} />
+      <BuyNow text={"buy now"} hRef={"/checkout"} />
     </section>
   );
 }

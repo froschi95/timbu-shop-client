@@ -1,13 +1,17 @@
 import React from "react";
 import Image from "next/image";
 import Bag from "/public/bag.svg";
+import Link from "next/link";
 
-const BuyNow = ({ text }) => {
+const BuyNow = ({ text, hRef }) => {
   return (
-    <footer className="mb-0 -bottom-4 h-14 bg-black flex gap-6 justify-center items-center">
+    <Link
+      href={hRef}
+      className="cursor-pointer mb-0 h-14 bg-black flex gap-6 justify-center items-center hover:scale-105 hover:transition-all"
+    >
       <Image src={Bag} alt="cart" />
       <p className="text-sm font-bold text-white uppercase">{text}</p>
-    </footer>
+    </Link>
   );
 };
 

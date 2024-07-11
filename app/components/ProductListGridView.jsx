@@ -1,4 +1,7 @@
+import Image from "next/image";
 import ProductCard from "./ProductCard";
+import Group from "/public/Group.svg";
+import Zara from "/public/Group 294.svg";
 
 export default function ProductListGridView({ products }) {
   return (
@@ -8,7 +11,15 @@ export default function ProductListGridView({ products }) {
           <ProductCard product={product} />
           <div className="">
             <h2 className="text-xs font-semibold">{product.name}</h2>
-            <p className="text-xs text-gray-600">{product.description}</p>
+            <p className="text-xs flex items-center">
+              <span>
+                <Image src={Zara} alt="" />
+              </span>
+              <span>zara offical</span>
+              <span>
+                <Image src={Group} alt="" />
+              </span>
+            </p>
           </div>
         </div>
       ))}
