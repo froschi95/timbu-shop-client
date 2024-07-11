@@ -20,7 +20,7 @@ const Filters = ({ viewType, toggleViewType }) => {
           <ToggleView viewType={viewType} toggleViewType={toggleViewType} />
         </div>
       </div>
-      <div className="flex gap-[6px]">
+      <div className="flex gap-[6px] md:hidden">
         <div className="border-2 border-[#c4c4c456] flex items-center px-2 rounded-[30px] text-sm">
           <p>Women</p>
           <Image src={Close} alt="clear" />

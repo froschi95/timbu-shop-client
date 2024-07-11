@@ -8,8 +8,6 @@ export default function ProductCard({ product }) {
       <Image
         src={product.image}
         alt={product.name}
-        // width={250}
-        // height={260}
         fill
         sizes="100vw" //(max-width: 768px) 100vw, (max-width: 1440px) 50vw, 33vw
         className="rounded-xl object-cover "
