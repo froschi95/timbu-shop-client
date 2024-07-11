@@ -6,7 +6,7 @@ import DeliveryDateCard from "../components/DeliveryDateCard";
 
 const CheckoutPage = () => {
   return (
-    <div className="p-6">
+    <div className="p-6 mx-auto w-full">
       <div className="mx-auto flex flex-col items-center justify-center text-center mb-10">
         <h1>CHECKOUT</h1>
         <Image src={Line} alt="line" />
