@@ -1,12 +1,11 @@
-// import Header from "../components/Header.jsx";
 import BuyNow from "../components/BuyNow.jsx";
 
-export default function CartLayout({ children }) {
+export default function CheckoutLayout({ children }) {
   return (
     <section>
       {/* <Header /> */}
       {children}
-      <BuyNow text={"buy now"} />
+      <BuyNow text={"place order"} />
     </section>
   );
 }
