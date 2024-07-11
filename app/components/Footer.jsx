@@ -39,6 +39,14 @@ export default function Footer() {
           <Image src={IOSStore} alt="" />
         </div>
       </div>
+      <div className="flex gap-1 ">
+        <div className="underline px-2">
+          <p>Privacy Policy</p>
+        </div>
+        <div className="border-l underline px-2">
+          <p>Unsubscribe</p>
+        </div>
+      </div>
       <div className="text-xs">
         <p>All prices and products are subjects to availability.</p>
         <p>
