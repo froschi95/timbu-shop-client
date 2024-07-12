@@ -64,14 +64,14 @@ const Navbar = () => {
         </div>
 
         <ul className="hidden md:flex text-white">
-          {links.map(({ id, link }) => (
+          {links.slice(1, 4).map(({ id, link }) => (
             <li
               key={id}
               className="nav-links px-4 cursor-pointer font-medium link-underline"
             >
               <Link
                 href={link}
-                className="hover:scale-105 hover:text-slate-200 hover:border-b hover:border-slate-100 hover:rounded-md transition duration-300"
+                className="hover:scale-105 hover:text-slate-200 hover:border-b hover:border-slate-100 hover:rounded-md transition duration-300 uppercase"
               >
                 {link}
               </Link>
