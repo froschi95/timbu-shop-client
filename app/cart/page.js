@@ -6,8 +6,8 @@ import products from "../data/products.json";
 
 const CartPage = () => {
   return (
-    <div className="mx-auto px-6 md:py-6 min-h-screen">
-      <div className="relative flex flex-col w-full md:w-2/3 gap-3 -z-10">
+    <div className="mx-auto px-6 md:py-6 min-h-screen md:flex md:justify-center">
+      <div className="relative flex flex-col w-full md:w-1/2 gap-3 -z-10">
         {products.slice(1, 4).map((product) => (
           <>
             <div key={product.id} className="relative flex gap-3">
