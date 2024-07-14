@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import ImageCard from "./ImageCard";
 import Image from "next/image";
@@ -16,6 +16,25 @@ const ProductCard = ({ product }) => {
   const [insideCart, setInsideCart] = useState(false);
   const { cart, addToCart, removeFromCart } = useCart();
   const [saved, setSaved] = useState(false);
+
+  useEffect(() => {
+    const savedItems = JSON.parse(localStorage.getItem("savedItems")) || [];
+    setSaved(savedItems.includes(product.id));
+  }, [product.id]);
+
+  const handleSaveClick = () => {
+    const savedItems = JSON.parse(localStorage.getItem("savedItems")) || [];
+    if (saved) {
+      const newSavedItems = savedItems.filter((id) => id !== product.id);
+      localStorage.setItem("savedItems", JSON.stringify(newSavedItems));
+      setSaved(false);
+    } else {
+      savedItems.push(product.id);
+      localStorage.setItem("savedItems", JSON.stringify(savedItems));
+      setSaved(true);
+    }
+  };
+
   const isProductInCart = cart.some((item) => item.id === product.id);
 
   const handleCartClick = () => {
@@ -29,17 +48,17 @@ const ProductCard = ({ product }) => {
     <div className="grid gap-3 md:gap-5 text-[#A17E6D]">
       <ImageCard id={product.id} product={product}>
         <div
-          onClick={() => setSaved(!saved)}
+          onClick={handleSaveClick}
           className="absolute top-[0.935rem] right-[0.935rem] h-6 w-6 bg-slate-200/40 rounded-full transition-transform duration-150 hover:scale-105 hover:bg-amber-300/60"
         >
           {saved ? (
-            <Image src={Heart} alt="Heart" />
-          ) : (
             <Image src={HeartSolid} alt="Heart solid" />
+          ) : (
+            <Image src={Heart} alt="Heart" />
           )}
         </div>
-        <div onClick={() => handleCartClick}>
-          {insideCart ? (
+        <div onClick={handleCartClick}>
+          {isProductInCart ? (
             <div className="absolute top-[2.935rem] right-[0.935rem] h-6 w-6 bg-slate-200/60 rounded-full transition-transform duration-150 hover:scale-105 hover:bg-amber-300/60">
               <Image src={BagSolid} alt="" />
             </div>

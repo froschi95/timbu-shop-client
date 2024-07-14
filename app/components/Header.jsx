@@ -40,45 +40,48 @@ const Navbar = () => {
   ];
 
   return (
-    <nav className="mx-auto px-6 bg-white md:bg-[#948775]">
-      <div className="flex justify-between items-center  h-[104px] text-white sticky">
-        {/* fixed navOpen*/}
-        <div
-          onClick={() => setNavOpen(!navOpen)}
-          className="relative cursor-pointer pr-4 z-50 text-white md:hidden"
-        >
-          {navOpen ? (
-            <Image
-              src={CloseIcon}
-              alt="close"
-              unoptimized
-              className="hover:scale-105 hover:transition-all duration-200"
-            />
-          ) : (
-            <Image
-              src={MenuIcon}
-              alt="menu"
-              unoptimized
-              className="hover:scale-110 hover:transition-all duration-200"
-            />
-          )}
+    <nav className="mx-auto px-6 py-4 bg-white md:bg-[#948775]">
+      <div className="flex justify-between items-center">
+        {/* Mobile menu Button */}
+        <div className="md:hidden z-50">
+          <button
+            className="outline-none mobile-menu-button"
+            onClick={() => setNavOpen(!navOpen)}
+          >
+            {navOpen ? (
+              <Image
+                src={CloseIcon}
+                alt="close"
+                unoptimized
+                className="hover:scale-105 hover:transition-all duration-200"
+              />
+            ) : (
+              <Image
+                src={MenuIcon}
+                alt="menu"
+                unoptimized
+                className="hover:scale-110 hover:transition-all duration-200"
+              />
+            )}
+          </button>
         </div>
-
-        <ul className="hidden md:flex text-white">
-          {links.slice(1, 4).map(({ id, link }) => (
-            <li
-              key={id}
-              className="nav-links px-4 cursor-pointer font-medium link-underline"
-            >
-              <Link
-                href={link}
-                className="hover:scale-105 hover:text-slate-200 hover:border-b hover:border-slate-100 hover:rounded-md transition duration-300 uppercase"
+        <div className="hidden md:block">
+          <ul className="flex items-center space-x-8 text-white">
+            {links.slice(1, 4).map(({ id, link }) => (
+              <li
+                key={id}
+                className="nav-links px-4 cursor-pointer font-medium link-underline"
               >
-                {link}
-              </Link>
-            </li>
-          ))}
-        </ul>
+                <Link
+                  href={link}
+                  className="hover:scale-105 hover:text-slate-200 hover:border-b hover:border-slate-100 hover:rounded-md transition duration-300 uppercase"
+                >
+                  {link}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
 
         <div className="cursor-pointer hover:scale-105 hover:transition ease-in-out delay-150">
           <Link href={"/"}>
@@ -86,6 +89,7 @@ const Navbar = () => {
           </Link>
         </div>
 
+        {/* Cart & Search Mobile*/}
         <div className="flex md:hidden gap-3">
           <Image
             src={SearchIcon}
@@ -105,6 +109,8 @@ const Navbar = () => {
             )}
           </Link>
         </div>
+
+        {/* Cart, Seart, SavedItems md and above */}
         <div className="hidden md:flex gap-3">
           <Link href={"/search"}>
             <svg
@@ -177,16 +183,16 @@ const Navbar = () => {
         </div>
 
         {navOpen && (
-          <div className="flex flex-col px-4 fixed top-0 pt-[113px] left-0 w-full h-screen bg-white z-40 text-black bg-opacity-100">
-            <ul className="flex flex-col gap-6 ">
+          <div className="grid z-40 fixed pt-10 px-7 top-0 left-0 w-full h-screen md:hidden bg-white text-[#A17E6D] font-semibold">
+            <ul className="mt-5 space-y-4">
               {links.map(({ id, link }) => (
+                // <li key={id}>
                 <li
                   key={id}
                   className="cursor-pointer py-5 text-lg hover:scale-105 duration-200"
                 >
                   <Link
                     className="w-full flex justify-between items-center"
-                    onClick={() => setNavOpen(!navOpen)}
                     href={link}
                   >
                     <p>{link}</p>
@@ -195,12 +201,12 @@ const Navbar = () => {
                 </li>
               ))}
             </ul>
-            <div className="flex flex-col w-[186px]">
-              <div className="flex justify-between call">
+            <div className="grid gap-2 content-center">
+              <div className="flex gap-20 items-center call">
                 <Image alt="call" src={Call} />
                 <p>(903) 951-8033</p>
               </div>
-              <div className="flex justify-between store">
+              <div className="flex gap-20 items-center store">
                 <Image alt="Location" src={Location} />
                 <p>Our store near you</p>
               </div>

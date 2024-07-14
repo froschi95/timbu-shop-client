@@ -6,6 +6,8 @@ import Star from "/public/Star 1.svg";
 import { useCart } from "../context/CartContext";
 import ImageCard from "../components/ImageCard";
 import PriceBtn from "../components/PriceBtn";
+import CloseIcon from "../../public/Close.svg";
+import Link from "next/link";
 
 const CartPage = () => {
   const {
@@ -25,6 +27,14 @@ const CartPage = () => {
 
   return (
     <div className="mx-auto px-6 md:py-6 min-h-screen md:flex md:justify-center">
+      <Link href={"/"} className="relative my-4">
+        <Image
+          src={CloseIcon}
+          alt="close"
+          unoptimized
+          className="hover:scale-105 hover:transition-all duration-200"
+        />
+      </Link>
       <ul className="relative flex flex-col w-full md:w-1/2 gap-3 -z-10">
         {cart.map((item) => (
           <li key={item.id}>
