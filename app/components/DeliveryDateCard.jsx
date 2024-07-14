@@ -2,7 +2,7 @@ import React from "react";
 
 const DeliveryDateCard = () => {
   return (
-    <div className="mx-auto w-[348px] max-w-[472px] grid grid-cols-1 gap-4 mt-4">
+    <div className="mx-auto w-[348px] max-w-[472px] grid grid-cols-1 gap-4 md:rounded-xl md:border md:p-4">
       <div className="flex gap-4">
         <p>Schedule Options</p>
         <div className="bg-black rounded-[11.13px] w-[36.19px] h-[22px] flex items-center justify-end">
