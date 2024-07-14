@@ -5,7 +5,9 @@ export async function middleware(req) {
   const { pathname, searchParams } = req.nextUrl;
 
   if (pathname.startsWith("/api/proxy")) {
-    const targetUrl = new URL("https://api.timbu.cloud/");
+    const targetUrl = new URL(
+      "https://timbu-get-all-products.reavdev.workers.dev/"
+    );
     targetUrl.search = searchParams.toString();
 
     const response = await fetch(targetUrl.toString(), {
@@ -15,9 +17,7 @@ export async function middleware(req) {
     });
 
     if (!response.ok) {
-      const backupUrl = new URL(
-        "https://timbu-get-all-products.reavdev.workers.dev/"
-      );
+      const backupUrl = new URL("https://api.timbu.cloud/");
       backupUrl.search = searchParams.toString();
 
       const backupResponse = await fetch(backupUrl.toString(), {
