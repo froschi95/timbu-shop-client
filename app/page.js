@@ -10,6 +10,7 @@ import MenuTab from "./components/MenuTab";
 import Filters from "./components/Filters";
 import Pagination from "./components/Pagination";
 import Footer from "./components/Footer";
+import Loading from "./Loading";
 
 const fetchProducts = async ({
   organization_id,
@@ -77,7 +78,7 @@ export default function Home() {
     getProducts();
   }, [page]);
 
-  if (loading) return <div>Loading...</div>;
+  if (loading) return <Loading />;
   if (isError) return <div>Error fetching products</div>;
   if (isEmpty) return <div>No products found</div>;
 
