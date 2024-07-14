@@ -26,84 +26,88 @@ const CartPage = () => {
   };
 
   return (
-    <div className="mx-auto px-6 md:py-6 min-h-screen md:flex md:justify-center">
-      <Link href={"/"} className="relative my-4">
-        <Image
-          src={CloseIcon}
-          alt="close"
-          unoptimized
-          className="hover:scale-105 hover:transition-all duration-200"
-        />
-      </Link>
-      <ul className="relative flex flex-col w-full md:w-1/2 gap-3 -z-10">
-        {cart.map((item) => (
-          <li key={item.id}>
-            <div className="relative flex gap-3">
-              <div className="relative w-full">
-                <ImageCard product={item}>
-                  <PriceBtn price={item.price * item.quantity} />
-                </ImageCard>
-              </div>
-              <div className="w-full">
-                <div className="flex flex-col gap-[11px]">
-                  <div className="text-sm">
-                    <h1 className="font-bold">ZARA OFFICIAL</h1>
-                    <h3 className="font-medium">{item.name}</h3>
-                    {/* <p className="text-gray-600">{product.description}</p> */}
-                  </div>
-                  <div className="flex">
-                    <Image src={Star} alt="star" />
-                    <p>4.8</p>
-                  </div>
+    <main className="mx-auto min-h-screen px-6">
+      <div className="bg-white flex flex-col items-center">
+        {" "}
+        {/* grid content-center justify-center items-center */}
+        <Link href={"/"} className="m-8 self-start">
+          <Image
+            src={CloseIcon}
+            alt="close"
+            unoptimized
+            className="hover:scale-105 hover:transition-all duration-200"
+          />
+        </Link>
+        <ul className="relative flex flex-col w-full md:w-1/2 gap-3 mt-3">
+          {cart.map((item) => (
+            <li key={item.id}>
+              <div className="relative flex  md:justify-between">
+                <div className="relative w-full">
+                  <ImageCard product={item}>
+                    <PriceBtn price={item.price * item.quantity} />
+                  </ImageCard>
+                </div>
+                <div className="w-full mx-10">
+                  <div className="flex flex-col gap-[0.6875rem]">
+                    <div className="text-sm">
+                      <h1 className="font-bold">ZARA OFFICIAL</h1>
+                      <h3 className="font-medium">{item.name}</h3>
+                      {/* <p className="text-gray-600">{product.description}</p> */}
+                    </div>
+                    <div className="flex">
+                      <Image src={Star} alt="star" />
+                      <p>4.8</p>
+                    </div>
 
-                  <div className="flex gap-[6px] text-center text-xs">
-                    <p>Size</p>
-                    <div className="border-2 border-[#C4C4C4] bg-[#c4c4c441] w-6 h-6 rounded-full text-center text-xs">
-                      <p>S</p>
+                    <div className="flex gap-[6px] text-center text-xs">
+                      <p>Size</p>
+                      <div className="border-2 border-[#C4C4C4] bg-[#c4c4c441] w-6 h-6 rounded-full text-center text-xs">
+                        <p>S</p>
+                      </div>
+                      <div className="border-2 border-[#C4C4C4] w-6 h-6 rounded-full text-center text-xs">
+                        <p>M</p>
+                      </div>
+                      <div className="border-2 border-[#C4C4C4] w-6 h-6 rounded-full text-center text-xs">
+                        <p>L</p>
+                      </div>
                     </div>
-                    <div className="border-2 border-[#C4C4C4] w-6 h-6 rounded-full text-center text-xs">
-                      <p>M</p>
-                    </div>
-                    <div className="border-2 border-[#C4C4C4] w-6 h-6 rounded-full text-center text-xs">
-                      <p>L</p>
-                    </div>
-                  </div>
 
-                  <div className="flex gap-1 text-sm text-center">
-                    <button
-                      className="rounded-full w-6 h-6 border-2 border-[#C4C4C4]"
-                      onClick={() => handleDecrease(item.id)}
-                    >
-                      -
-                    </button>
-                    <div className="rounded-full w-6 h-6 border-2 border-[#C4C4C4]">
-                      <h2>{item.quantity}</h2>
+                    <div className="flex gap-1 text-sm text-center">
+                      <button
+                        className="rounded-full w-6 h-6 border-2 border-[#C4C4C4]"
+                        onClick={() => handleDecrease(item.id)}
+                      >
+                        -
+                      </button>
+                      <div className="rounded-full w-6 h-6 border-2 border-[#C4C4C4]">
+                        <h2>{item.quantity}</h2>
+                      </div>
+                      <button
+                        className="rounded-full w-6 h-6 border-2 border-[#C4C4C4]"
+                        onClick={() => handleIncrease(item.id)}
+                      >
+                        +
+                      </button>
                     </div>
-                    <button
-                      className="rounded-full w-6 h-6 border-2 border-[#C4C4C4]"
-                      onClick={() => handleIncrease(item.id)}
-                    >
-                      +
-                    </button>
                   </div>
                 </div>
               </div>
-            </div>
-            <hr className="divide-y divide-[#C4C4C4]" />
-          </li>
-        ))}
-        <div className="mt-20 h-11">
-          <hr className="divide-y divide-[#858585]" />
+              <hr className="divide-y divide-[#C4C4C4]" />
+            </li>
+          ))}
+          <div className="mt-20 h-11">
+            <hr className="divide-y divide-[#858585]" />
 
-          <div className="flex py-4 justify-between items-center">
-            <h1 className="text-sm font-bold">SUB TOTAL</h1>
-            <p className="text-sm font-bold text-[#A17E6D]">
-              ${totalCostOfAllItems}
-            </p>
+            <div className="flex py-4 justify-between items-center">
+              <h1 className="text-sm font-bold">SUB TOTAL</h1>
+              <p className="text-sm font-bold text-[#A17E6D]">
+                ${totalCostOfAllItems}
+              </p>
+            </div>
           </div>
-        </div>
-      </ul>
-    </div>
+        </ul>
+      </div>
+    </main>
   );
 };
 
