@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import ProductListGridView from "./components/ProductListGridView";
 import Hero from "./components/Hero";
 import products from "./data/products.json";
@@ -13,10 +13,30 @@ import Footer from "./components/Footer";
 
 export default function Home() {
   const [viewType, setViewType] = useState("grid");
+  const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(true);
   const toggleViewType = () => {
     setViewType((prevViewType) => (prevViewType === "list" ? "grid" : "list"));
     console.log(viewType);
   };
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const res = await fetch(`/api/proxy`);
+      console.log(res.status);
+      const contentType = res.headers.get("content-type");
+      if (!contentType || !contentType.includes("application/json")) {
+        throw new Error("API response is not JSON");
+      }
+
+      const result = await res.json();
+      setData(result);
+      console.log(result);
+      setLoading(false);
+    };
+
+    fetchData();
+  }, []);
 
   return (
     <>
