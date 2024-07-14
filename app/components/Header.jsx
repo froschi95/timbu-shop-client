@@ -11,10 +11,11 @@ import Forward from "../../public/Forward.svg";
 import Call from "../../public/Call.svg";
 import Location from "../../public/Location.svg";
 import HeartWhite from "/public/Heart(1).svg";
+import { useCart } from "../context/CartContext";
 
 const Navbar = () => {
   const [navOpen, setNavOpen] = useState(false);
-
+  const { totalUniqueItems } = useCart();
   const links = [
     {
       id: 1,
@@ -39,12 +40,12 @@ const Navbar = () => {
   ];
 
   return (
-    <header>
-      <nav className="flex justify-between items-center w-full h-[104px] px-6 text-white bg-white md:bg-[#948775] sticky">
+    <nav className="mx-auto px-6 bg-white md:bg-[#948775]">
+      <div className="flex justify-between items-center  h-[104px] text-white sticky">
         {/* fixed navOpen*/}
         <div
           onClick={() => setNavOpen(!navOpen)}
-          className="cursor-pointer pr-4 z-50 text-white md:hidden"
+          className="relative cursor-pointer pr-4 z-50 text-white md:hidden"
         >
           {navOpen ? (
             <Image
@@ -91,12 +92,17 @@ const Navbar = () => {
             alt="search"
             className="hover:scale-110 transition-all duration-200"
           />
-          <Link href={"/cart"}>
+          <Link href={"/cart"} className="relative">
             <Image
               alt="bag"
               src={Bag}
               className="text-white hover:scale-110 transition-all"
             />
+            {totalUniqueItems > 0 && (
+              <span className="absolute -top-1 -right-1 w-4 h-4 grid content-center text-center rounded-full bg-green-700 text-white text-xs font-semibold">
+                {totalUniqueItems}
+              </span>
+            )}
           </Link>
         </div>
         <div className="hidden md:flex gap-3">
@@ -201,8 +207,8 @@ const Navbar = () => {
             </div>
           </div>
         )}
-      </nav>
-    </header>
+      </div>
+    </nav>
   );
 };
 

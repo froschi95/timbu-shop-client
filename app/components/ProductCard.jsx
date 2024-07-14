@@ -1,46 +1,74 @@
 "use client";
-import { useState } from "react";
+import React, { useState } from "react";
+import Link from "next/link";
+import ImageCard from "./ImageCard";
 import Image from "next/image";
-import Heart from "/public/Frame 1389.svg";
 import BagSolid from "/public/BagSolid.svg";
 import BagOutline from "/public/BagOutline.svg";
+import Heart from "/public/Frame 1389.svg";
+import HeartSolid from "/public/HeartSolid.svg";
+import Zara from "/public/Group 294.svg";
+import Group from "/public/Group.svg";
+import PriceBtn from "./PriceBtn";
+import { useCart } from "../context/CartContext";
 
-export default function ProductCard({ product }) {
-  const [addToCart, setAddToCart] = useState(false);
+const ProductCard = ({ product }) => {
+  const [insideCart, setInsideCart] = useState(false);
+  const { cart, addToCart, removeFromCart } = useCart();
+  const [saved, setSaved] = useState(false);
+  const isProductInCart = cart.some((item) => item.id === product.id);
+
+  const handleCartClick = () => {
+    if (isProductInCart) {
+      removeFromCart(product.id);
+    } else {
+      addToCart(product);
+    }
+  };
   return (
-    <div className="relative rounded-xl shadow-md h-[164px] max-w-[250px] sm:h-48 xl:h-[260px]">
-      {/*  h-[164px] w-[154px] */}
-      <Image
-        src={product.image}
-        alt={product.name}
-        fill
-        sizes="100vw" //(max-width: 768px) 100vw, (max-width: 1440px) 50vw, 33vw
-        className="rounded-xl object-cover"
-      />
-      <Image src={Heart} alt="heart" className="absolute top-2 right-2" />
-      <div
-        className="cursor-pointer z-30 absolute top-9 right-2"
-        onClick={() => setAddToCart(!addToCart)}
-      >
-        {addToCart ? (
-          <Image
-            src={BagSolid}
-            alt="Added to Cart"
-            className="hover:scale-105 transition-all duration-150"
-            unoptimized
-          />
-        ) : (
-          <Image
-            src={BagOutline}
-            alt="Not added to Cart"
-            className="hover:scale-105 transition-all duration-150"
-            unoptimized
-          />
-        )}
-      </div>
-      <div className="absolute bottom-3 left-3 bg-white hover:bg-blue-600 text-[#A17E6D] px-2 w-14 h-8 rounded-xl text-center overflow-hidden">
-        <h2 className="pb-2 pt-1 font-bold">${product.price}</h2>
+    <div className="grid gap-3 md:gap-5 text-[#A17E6D]">
+      <ImageCard id={product.id} product={product}>
+        <div
+          onClick={() => setSaved(!saved)}
+          className="absolute top-[0.935rem] right-[0.935rem] h-6 w-6 bg-slate-200/40 rounded-full transition-transform duration-150 hover:scale-105 hover:bg-amber-300/60"
+        >
+          {saved ? (
+            <Image src={Heart} alt="Heart" />
+          ) : (
+            <Image src={HeartSolid} alt="Heart solid" />
+          )}
+        </div>
+        <div onClick={() => handleCartClick}>
+          {insideCart ? (
+            <div className="absolute top-[2.935rem] right-[0.935rem] h-6 w-6 bg-slate-200/60 rounded-full transition-transform duration-150 hover:scale-105 hover:bg-amber-300/60">
+              <Image src={BagSolid} alt="" />
+            </div>
+          ) : (
+            <div className="absolute top-[2.935rem] right-[0.935rem] h-6 w-6 bg-slate-200/60 rounded-full transition-transform duration-150 hover:bg-amber-300/60">
+              <Image src={BagOutline} alt="" />
+            </div>
+          )}
+        </div>
+
+        <PriceBtn price={product.price} />
+      </ImageCard>
+
+      <div className="grid content-center gap-[0.375rem]">
+        <h2 className="text-xs lg:text-[1.25rem] font-medium">
+          21WN reversible angora
+        </h2>
+        <p className="flex items-center">
+          <span>
+            <Image src={Zara} alt="zara" />
+          </span>
+          <span className="text-[0.5rem] lg:text-[0.75rem]">Zara Official</span>
+          <span>
+            <Image src={Group} alt="green check" />
+          </span>
+        </p>
       </div>
     </div>
   );
-}
+};
+
+export default ProductCard;
