@@ -11,32 +11,74 @@ import Filters from "./components/Filters";
 import Pagination from "./components/Pagination";
 import Footer from "./components/Footer";
 
+const fetchProducts = async ({
+  organization_id,
+  reverse_sort,
+  page,
+  size,
+  Appid,
+  Apikey,
+}) => {
+  const url = new URL("https://api/timbu/products");
+  url.searchParams.append("organization_id", organization_id);
+  url.searchParams.append("reverse_sort", reverse_sort);
+  url.searchParams.append("page", page);
+  url.searchParams.append("size", size);
+  url.searchParams.append("Appid", Appid);
+  url.searchParams.append("Apikey", Apikey);
+
+  const response = await fetch(url.toString());
+
+  if (!response.ok) {
+    throw new Error("Network response was not ok");
+  }
+
+  return response.json();
+};
+
 export default function Home() {
   const [viewType, setViewType] = useState("grid");
-  const [data, setData] = useState(null);
+  const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [isEmpty, setIsEmpty] = useState(false);
+  const [isError, setIsError] = useState(false);
+  const [page, setPage] = useState(1);
+
   const toggleViewType = () => {
     setViewType((prevViewType) => (prevViewType === "list" ? "grid" : "list"));
     console.log(viewType);
   };
 
   useEffect(() => {
-    const fetchData = async () => {
-      const res = await fetch(`/api/proxy`);
-      console.log(res.status);
-      const contentType = res.headers.get("content-type");
-      if (!contentType || !contentType.includes("application/json")) {
-        throw new Error("API response is not JSON");
-      }
-
-      const result = await res.json();
-      setData(result);
-      console.log(result);
-      setLoading(false);
+    const params = {
+      organization_id: process.env.ORGANISATION_ID,
+      reverse_sort: "false",
+      page: page,
+      size: 20,
+      Apikey: process.env.TIMBU_PUBLIC_API_KEY,
+      Appid: process.env.TIMBU_APP_ID,
     };
 
-    fetchData();
-  }, []);
+    const getProducts = async () => {
+      setLoading(true);
+      setIsError(false);
+      try {
+        const data = await fetchProducts(params);
+        setProducts(data.items);
+        setIsEmpty(data.total === 0);
+      } catch (error) {
+        setIsError(true);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    getProducts();
+  }, [page]);
+
+  if (loading) return <div>Loading...</div>;
+  if (isError) return <div>Error fetching products</div>;
+  if (isEmpty) return <div>No products found</div>;
 
   return (
     <>

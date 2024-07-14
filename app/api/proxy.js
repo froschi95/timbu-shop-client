@@ -5,7 +5,7 @@ export default async function handler(req, res) {
   const appId = process.env.TIMBU_APP_ID;
 
   const response = await fetch(
-    `https://api.timbu.cloud/products?organization_id=${orgId}&reverse_sort=false&page=${page}&size=${size}&Appid=${appId}&Apikey=${apiKey}`
+    `https://api.timbu.cloud/products?organization_id=${orgId}&reverse_sort=false&page=${page}&size=${size}&appId=${appId}&apiKey=${apiKey}`
   );
   const data = await response.json();
 
