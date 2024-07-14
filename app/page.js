@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import ProductListGridView from "./components/ProductListGridView";
 import Hero from "./components/Hero";
-import products from "./data/products.json";
+// import products from "./data/products.json";
 import ProductListListView from "./components/ProductListListView";
 import Sidebar from "./components/Sidebar";
 import MenuTab from "./components/MenuTab";
@@ -19,7 +19,7 @@ const fetchProducts = async ({
   Appid,
   Apikey,
 }) => {
-  const url = new URL("https://api/timbu/products");
+  const url = new URL("https://timbu-get-all-products.reavdev.workers.dev/");
   url.searchParams.append("organization_id", organization_id);
   url.searchParams.append("reverse_sort", reverse_sort);
   url.searchParams.append("page", page);
@@ -51,7 +51,7 @@ export default function Home() {
 
   useEffect(() => {
     const params = {
-      organization_id: process.env.ORGANISATION_ID,
+      organization_id: "bdb65bc75aa94bc5a66099898351426e",
       reverse_sort: "false",
       page: page,
       size: 20,
@@ -65,6 +65,7 @@ export default function Home() {
       try {
         const data = await fetchProducts(params);
         setProducts(data.items);
+        console.log(data);
         setIsEmpty(data.total === 0);
       } catch (error) {
         setIsError(true);
@@ -88,13 +89,14 @@ export default function Home() {
         <Filters viewType={viewType} toggleViewType={toggleViewType} />
         <div className="flex md:gap-20 lg:gap-[131px]">
           <Sidebar />
-          <div className="mt-4 mx-auto w-full">
+          {/* <div className="mt-4 mx-auto w-full">
             {viewType === "grid" ? (
               <ProductListGridView products={products} />
             ) : (
               <ProductListListView products={products} />
             )}
-          </div>
+          </div> */}
+          {console.log(products)}
         </div>
         <Pagination />
       </main>
