@@ -25,6 +25,7 @@ const CartPage = () => {
   const handleDecrease = (productId) => {
     updateQuantity(productId, -1);
   };
+  // console.log(cart);
 
   return (
     <main className="mx-auto min-h-screen px-6">
@@ -45,7 +46,9 @@ const CartPage = () => {
               <div className="relative flex  md:justify-between w-full">
                 <div className="relative w-full">
                   <ImageCard product={item}>
-                    <PriceBtn price={item.price * item.quantity} />
+                    <PriceBtn
+                      price={item.current_price[0].USD[0] * item.quantity}
+                    />
                   </ImageCard>
                 </div>
                 <div className="w-full mx-10">

@@ -13,7 +13,7 @@ import PriceBtn from "./PriceBtn";
 import { useCart } from "../context/CartContext";
 
 const ProductCard = ({ product }) => {
-  const [insideCart, setInsideCart] = useState(false);
+  // const [insideCart, setInsideCart] = useState(false);
   const { cart, addToCart, removeFromCart } = useCart();
   const [saved, setSaved] = useState(false);
 
@@ -44,6 +44,7 @@ const ProductCard = ({ product }) => {
       addToCart(product);
     }
   };
+  // console.log(product);
   return (
     <div className="grid gap-3 md:gap-5 text-[#A17E6D]">
       <ImageCard id={product.id} product={product}>
@@ -69,12 +70,12 @@ const ProductCard = ({ product }) => {
           )}
         </div>
 
-        <PriceBtn price={product.price} />
+        <PriceBtn price={product.current_price[0].USD[0]} />
       </ImageCard>
 
       <div className="grid content-center gap-[0.375rem]">
-        <h2 className="text-xs lg:text-[1.25rem] font-medium">
-          21WN reversible angora
+        <h2 className="text-xs md:text-sm xl:text-[1.25rem] font-semibold">
+          {product.name}
         </h2>
         <p className="flex items-center">
           <span>

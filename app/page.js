@@ -51,12 +51,12 @@ export default function Home() {
 
   useEffect(() => {
     const params = {
-      organization_id: "bdb65bc75aa94bc5a66099898351426e",
+      organization_id: process.env.NEXT_PUBLIC_ORGANISATION_ID,
       reverse_sort: "false",
       page: page,
       size: 20,
-      Apikey: process.env.TIMBU_PUBLIC_API_KEY,
-      Appid: process.env.TIMBU_APP_ID,
+      Apikey: process.env.NEXT_PUBLIC_TIMBU_API_KEY,
+      Appid: process.env.NEXT_PUBLIC_TIMBU_APP_ID,
     };
 
     const getProducts = async () => {
@@ -89,14 +89,14 @@ export default function Home() {
         <Filters viewType={viewType} toggleViewType={toggleViewType} />
         <div className="flex md:gap-20 lg:gap-[131px]">
           <Sidebar />
-          {/* <div className="mt-4 mx-auto w-full">
+          <div className="mt-4 mx-auto w-full">
             {viewType === "grid" ? (
               <ProductListGridView products={products} />
             ) : (
               <ProductListListView products={products} />
             )}
-          </div> */}
-          {console.log(products)}
+          </div>
+          {/* {console.log(products)} */}
         </div>
         <Pagination />
       </main>

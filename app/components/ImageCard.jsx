@@ -8,7 +8,7 @@ const ImageCard = ({ product, children }) => {
       <div className="relative overflow-hidden h-44 md:h-[16.5rem] w-full bg-transparent rounded-[1.375rem] aspect-h-1 aspect-w-1">
         <Link href={`/products/${product.id}`} className="absolute inset-0">
           <Image
-            src={product.image}
+            src={`https://api.timbu.cloud/images/${product.photos[0].url}`}
             alt={`Image for product ${product.id}`}
             fill
             sizes="(max-width: 768px) 100vw, 

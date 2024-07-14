@@ -58,11 +58,11 @@ export const CartProvider = ({ children }) => {
   const totalUniqueItems = cart.length;
   const totalCostPerItem = cart.map((item) => ({
     ...item,
-    totalCost: item.price * item.quantity,
+    totalCost: item.current_price[0].USD[0] * item.quantity,
   }));
 
   const totalCostOfAllItems = cart.reduce((total, item) => {
-    return total + item.price * item.quantity;
+    return total + item.current_price[0].USD[0] * item.quantity;
   }, 0);
 
   return (
