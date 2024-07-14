@@ -18,7 +18,9 @@ const ProductListListView = ({ products }) => {
               <div className="text-sm">
                 <h1 className="font-bold">ZARA OFFICIAL</h1>
                 <h3 className="font-medium">{product.name}</h3>
-                {/* <p className="text-gray-600">{product.description}</p> */}
+                <p className="text-gray-600 hidden md:block">
+                  {product.description}
+                </p>
               </div>
               <div className="flex">
                 <Image src={Star} alt="star" />
