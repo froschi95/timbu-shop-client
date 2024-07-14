@@ -11,31 +11,7 @@ import Filters from "./components/Filters";
 import Pagination from "./components/Pagination";
 import Footer from "./components/Footer";
 import Loading from "./Loading";
-
-const fetchProducts = async ({
-  organization_id,
-  reverse_sort,
-  page,
-  size,
-  Appid,
-  Apikey,
-}) => {
-  const url = new URL("https://timbu-get-all-products.reavdev.workers.dev/");
-  url.searchParams.append("organization_id", organization_id);
-  url.searchParams.append("reverse_sort", reverse_sort);
-  url.searchParams.append("page", page);
-  url.searchParams.append("size", size);
-  url.searchParams.append("Appid", Appid);
-  url.searchParams.append("Apikey", Apikey);
-
-  const response = await fetch(url.toString());
-
-  if (!response.ok) {
-    throw new Error("Network response was not ok");
-  }
-
-  return response.json();
-};
+import { fetchProducts } from "./utils/fetchProducts";
 
 export default function Home() {
   const [viewType, setViewType] = useState("grid");

@@ -5,33 +5,10 @@ import PriceBtn from "../../components/PriceBtn";
 import Link from "next/link";
 import Image from "next/image";
 import Close from "/public/Close.svg";
+import fetchProducts from "../../utils/fetchProducts.js";
 
 const ProductDetail = async ({ params }) => {
   const { id } = params;
-  const fetchProducts = async ({
-    organization_id,
-    reverse_sort,
-    page,
-    size,
-    Appid,
-    Apikey,
-  }) => {
-    const url = new URL("https://timbu-get-all-products.reavdev.workers.dev/");
-    url.searchParams.append("organization_id", organization_id);
-    url.searchParams.append("reverse_sort", reverse_sort);
-    url.searchParams.append("page", page);
-    url.searchParams.append("size", size);
-    url.searchParams.append("Appid", Appid);
-    url.searchParams.append("Apikey", Apikey);
-
-    const response = await fetch(url.toString());
-
-    if (!response.ok) {
-      throw new Error("Network response was not ok");
-    }
-
-    return response.json();
-  };
 
   // Fetching product data based on the id
   const products = await fetchProducts({

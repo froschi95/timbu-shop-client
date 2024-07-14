@@ -2,7 +2,6 @@
 
 .env
 
-app/utils/
 app/utils/_misc
 
 # dependencies
