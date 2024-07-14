@@ -11,12 +11,16 @@ const Filters = ({ viewType, toggleViewType }) => {
       <div className="flex justify-between items-center mb-2 md:hidden">
         <h1>APPAREL</h1>
         <div className="flex gap-2">
-          <div className="bg-[#c4c4c456] flex items-center px-4 rounded-[33px] text-sm">
+          <div className="bg-[#c4c4c456] flex items-center px-4 rounded-[33px] text-sm cursor-pointer">
             <p>New</p>
 
             <Image src={Down} alt="dropdown" />
           </div>
-          <Image src={CatFilterIcon} alt="categoryFilter" />
+          <Image
+            src={CatFilterIcon}
+            alt="categoryFilter"
+            className="cursor-pointer"
+          />
           <ToggleView viewType={viewType} toggleViewType={toggleViewType} />
         </div>
       </div>

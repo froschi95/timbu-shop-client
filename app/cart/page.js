@@ -8,6 +8,7 @@ import ImageCard from "../components/ImageCard";
 import PriceBtn from "../components/PriceBtn";
 import CloseIcon from "../../public/Close.svg";
 import Link from "next/link";
+import BuyNow from "../components/BuyNow";
 
 const CartPage = () => {
   const {
@@ -41,7 +42,7 @@ const CartPage = () => {
         <ul className="relative flex flex-col w-full md:w-1/2 gap-3 mt-3">
           {cart.map((item) => (
             <li key={item.id}>
-              <div className="relative flex  md:justify-between">
+              <div className="relative flex  md:justify-between w-full">
                 <div className="relative w-full">
                   <ImageCard product={item}>
                     <PriceBtn price={item.price * item.quantity} />
@@ -52,7 +53,9 @@ const CartPage = () => {
                     <div className="text-sm">
                       <h1 className="font-bold">ZARA OFFICIAL</h1>
                       <h3 className="font-medium">{item.name}</h3>
-                      {/* <p className="text-gray-600">{product.description}</p> */}
+                      <p className="hidden md:block text-gray-600">
+                        {item?.description}
+                      </p>
                     </div>
                     <div className="flex">
                       <Image src={Star} alt="star" />
@@ -98,15 +101,14 @@ const CartPage = () => {
           <div className="mt-20 h-11">
             <hr className="divide-y divide-[#858585]" />
 
-            <div className="flex py-4 justify-between items-center">
-              <h1 className="text-sm font-bold">SUB TOTAL</h1>
-              <p className="text-sm font-bold text-[#A17E6D]">
-                ${totalCostOfAllItems}
-              </p>
+            <div className="flex py-4 justify-between items-center text-base font-bold">
+              <h1>SUB TOTAL</h1>
+              <p className=" text-[#A17E6D]">${totalCostOfAllItems}</p>
             </div>
           </div>
         </ul>
       </div>
+      <BuyNow text={"buy now"} hRef={"/checkout"} />
     </main>
   );
 };
