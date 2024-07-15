@@ -21,7 +21,7 @@ const PaymentOptCard = () => {
     },
   ];
   return (
-    <div className="mx-auto w-[348px] max-w-[472px] grid grid-cols-1 gap-4 md:rounded-xl md:border md:p-4">
+    <div className="mx-auto w-full max-w-[472px] grid grid-cols-1 gap-4 md:rounded-xl md:border md:p-4">
       <h2 className="text-[#1D1D1D] text-base font-semibold md:hidden">
         Payment Options
       </h2>

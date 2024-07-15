@@ -19,7 +19,7 @@ const AddressCard = () => {
   ];
 
   return (
-    <div className="mx-auto w-[348px] max-w-[472px] grid grid-cols-1 gap-4 md:rounded-xl md:border md:p-4">
+    <div className="mx-auto w-full max-w-[472px] grid grid-cols-1 gap-4 md:rounded-xl md:border md:p-4">
       <p className="text-[#404040]">Select from saved or add new.</p>
       <div className="grid grid-cols-1 gap-3">
         {addresses.map((address) => (

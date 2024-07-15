@@ -5,7 +5,7 @@ import Mastercard from "/public/Mastercard.svg";
 
 const SavedOptionsCard = () => {
   return (
-    <div className="mx-auto w-[348px] max-w-[472px] grid grid-cols-1 gap-4 md:rounded-xl md:border md:p-4">
+    <div className="mx-auto w-full max-w-[472px] grid grid-cols-1 gap-4 md:rounded-xl md:border md:p-4">
       <h2 className="hidden md:block text-[#1D1D1D] text-base font-semibold">
         Payment Options
       </h2>
